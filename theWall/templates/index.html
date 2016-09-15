@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Chat Wall</title>
+	<link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename='wallindex.css')}}'>
+</head>
+<body>
+	<h2 id='header'>Welcome to Chat Wall!</h2>
+	<div id='loginBox'>
+		<h3>Login</h3>
+		<form action='/login' method='POST'>
+			Email: <input type='text' name='user'>
+			Password: <input type='text' name='password'>
+			<input type='submit' value='Login'>
+		</form>
+	</div>
+	{% with messages = get_flashed_messages(category_filter=["regerror"]) %}
+		{% if messages %}
+			{% for message in messages %}
+				<p> {{ message }} </p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+
+	<div id='registrationBox'>
+		<h3>Not a User? Register Below:</h3>
+		<form action='/register' method='POST'>
+			First Name: <input type='text' name='firstname'><br>
+			Last Name: <input type='text' name='lastname'><br>
+			Email: <input type='text' name='email'><br>
+			Password: <input type='text' name='password'><br>
+			Confirm Password: <input type='text' name='confirmpass'><br>
+			<input type='submit' value='Create New User'>
+		</form>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p> {{ message }} </p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	</div>
+</body>
+</html>

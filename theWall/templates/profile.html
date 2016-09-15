@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel = 'stylesheet' type = 'text/css' href='{{url_for('static', filename='wall.css')}}'>
+</head>
+<body>
+	<div id='header'>
+		{% for i in userData %}
+		<h2 id='welcome'>Welcome, {{ i.first_name }}!</h2>
+			<div id='acctWrap'>
+				<form action='/logout' method='POST' id='logoutButton'>
+					<input type='submit' value='Log Out'>
+				</form>
+				<form action='/deactivate/{{userData[0].id}}' method='POST' id='deactivateButton'>
+					<input type='submit' value='Deactivate Account'>
+				</form>
+			</div>
+		{% endfor %}
+	</div>
+	<div id='msgPost'>
+		<h3>Post a Message: </h3>
+		<form action='/messageBoard' method='POST'>
+			<input type='text' name='msgBox' id='textBox'><br>
+			<input type='submit' value='Post Message'>
+		</form>
+	</div>
+
+	<div id='msgWall'>
+		<div id='msgWrap'>
+			<h3>Message Wall: </h3>
+			{% for i in userMsg %}
+			<div class='msg'>
+				{% if i.user_id == session["user_id"] %}
+					<form action='/deleteMsg/{{message_id}}' method=''>	
+						<input type='submit' value='Delete Message'> 
+					</form>
+				{% endif %}
+				<div class='msgName'>
+					<div class='name'>
+						{{ i.first_name }}
+						{{ i.last_name }}
+					</div>
+					<div class='msgdetail'>
+						<p class='timestamp'>submitted on: </p>
+						{{ i.created_at }}
+					</div>
+				</div>
+				<div class='postedMSG'>
+					{{ i.message }}
+					<div class='Comments'>
+						{% for j in comments %}
+							{% if i.message_id == j.messages_id %}
+								<p class='info'>{{ j.first_name }}</p>
+								<p class='info'>{{ j.last_name }} </p>
+								<p class= 'detail'> commented on: </p>
+								<p class='detail'>{{ j.created_at }}</p>
+								<p class='postedComment'>{{ j.comment }}</p>
+									{% if j.user_id == session['user_id']%}
+										<button class='deleteComment' type='submit'>Delete</button>
+									{% endif %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<form action='/comment' method='POST'>
+					<input type='text' class='commentBox' name='comment'>
+					<input type='hidden' name='message_id' value= {{i.message_id}}>
+					<input type='submit' value='Post a Comment' class='pcomment'>
+				</form>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	
+</body>
+
+</html>

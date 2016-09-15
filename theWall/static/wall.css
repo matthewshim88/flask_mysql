@@ -1,0 +1,116 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: sans-serif;
+}
+
+p{
+	display:inline-block;
+}
+
+#header{
+	background-color: rgb(59,89,152);
+	color:white;
+	width:480px;
+}
+
+.pcontinue{
+	display:inline-block;
+}
+
+#welcome{
+	display:inline-block;
+}
+
+	#logoutButton{
+		display:inline-block;
+	}
+
+	#deactivateButton{
+		display:inline-block;
+	}
+
+	#acctWrap{	
+		margin-left:60px;
+		display:inline-block;
+	}
+
+#textBox{
+	width:400px;
+	height:40px;
+}
+
+#msgPost{
+	width:480px;
+	background-color:orange;
+}
+
+#msgWall{
+	background-color: rgb(59, 89, 152);
+	width: 480px;
+	height: 480px;
+	display: inline-block;
+}
+	.msg{
+		margin:10px;
+	}
+
+	.msgdetail{
+		font-style: italic;
+		font-size: 0.9em;
+	}
+
+	.timestamp{
+		display:inline-block;
+	}
+		.name{
+			display:inline-block;
+			color: rgb(109,132,180);
+		}
+
+	#msgWrap{
+		background-color:white;
+		width:400px;
+		height:400px;
+		margin-left:25px;
+		margin-top:25px;
+		vertical-align: bottom;
+		display:inline-block;
+		overflow: scroll;
+	}
+		.commentBox{
+			width:200px;
+			height:40px;
+		}
+
+		.pcomment{
+			font-weight: bold;
+			background-color: rgb(2,233,16);
+			border-radius:5px;
+			width:120px;
+			height:25px;
+		}
+
+		.postedMSG{
+			margin:10px;
+		}
+
+		.Comments{
+			font-size: 0.8em;
+			margin-left: 20px;
+			margin-top:10px;
+			overflow: scroll;
+		}
+
+			.deleteComment{
+				display:block;
+				margin-bottom:10px;
+			}
+
+			p.info{
+				display:inline-block;
+			}
+			p.postedComment{
+				color: rgb(29, 202, 255);
+				display:block;
+			}
